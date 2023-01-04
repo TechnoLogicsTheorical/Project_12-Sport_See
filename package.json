@@ -8,7 +8,8 @@
         "react-scripts": "5.0.1"
     },
     "scripts": {
-        "start": "react-scripts start"
+        "start": "react-scripts start",
+        "format": "export PRETTIER_CONFIG_PATH=configs/.prettierrc && prettier --write 'src/**/*.{js,jsx}'"
     },
     "eslintConfig": {
         "extends": [
@@ -26,5 +27,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "prettier": "^2.8.1"
     }
 }
