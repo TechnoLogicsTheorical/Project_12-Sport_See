@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import Logo from '../../assets/img/logo.png'
 
 const HeaderContainer = styled.div`
-    background-color: black;
-    color: white;
+    background-color: var(--black-color);
+    color: var(--white-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
 
 const ImageLogo = styled.img`
+    box-sizing: content-box;
     display: block;
     height: 60px;
     padding: 18px 0 12px 28px

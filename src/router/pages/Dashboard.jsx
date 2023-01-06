@@ -1,10 +1,12 @@
 import React from 'react';
 
-import Header from '../../components/Header';
 import { createGlobalStyle } from 'styled-components';
+import Header from '../../components/Header';
+import AsideBar from '../../components/AsideBar/index.jsx';
 
 const GlobalStyle = createGlobalStyle`
     *, :before, :after {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
@@ -15,6 +17,8 @@ const GlobalStyle = createGlobalStyle`
     }
     
     :root {
+        --black-color: #020203;
+        --white-color: #FFFFFF;
         --red-color: #FF0101;
         --gray-color: #74798C;
         
@@ -28,7 +32,7 @@ export default function Dashboard() {
         <>
             <GlobalStyle />
             <Header />
-
+            <AsideBar />
         </>
     )
 }
