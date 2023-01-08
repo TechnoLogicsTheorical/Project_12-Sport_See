@@ -7,9 +7,10 @@ import Bike from '../../assets/icons/icon3.png';
 import Alter from '../../assets/icons/icon4.png';
 
 const AsideContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   
     background-color: var(--black-color);
     color: var(--white-color);

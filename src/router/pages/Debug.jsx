@@ -8,15 +8,13 @@ function Debug() {
 
     useEffect(() => {
         async function getData() {
-            const requestResult = await fetchUserData('14');
+            const requestResult = await fetchUserData('12');
             if ( requestResult.hasOwnProperty('data') ) {
                 setUserData(requestResult.data);
             } else setError(requestResult)
         }
         getData();
     }, [])
-
-    console.log(userData);
 
     return (
         <>
