@@ -3,6 +3,9 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../../components/Header';
 import AsideBar from '../../components/AsideBar/index.jsx';
+import { fetchUserData } from '../../utils/api.js';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
     *, :before, :after {
@@ -51,11 +54,26 @@ const Name = styled.span`
 
 const UserHeader = styled.div``;
 
-const MotivationPhrase = styled.p`
-    
-`;
+const MotivationPhrase = styled.p``;
 
 export default function Dashboard() {
+    const [userData, setUserData] = useState(null);
+
+    async function getData() {
+        const baseUrl = '/mocked_datas/users';
+        const userId = '12';
+        const userEndpoint = 'mainData.json';
+
+        const completeURI = `${baseUrl}/${userId}/${userEndpoint}`
+        const data = await fetchUserData(completeURI);
+        setUserData(data);
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    // ----------------------------------
     return (
         <>
             <GlobalStyle />
@@ -63,12 +81,14 @@ export default function Dashboard() {
 
             <ContentApp>
                 <AsideBar />
+                { userData ? (
                 <UserDetails>
                     <UserHeader>
-                        <Greeting>Bonjour, <Name>Thomas</Name></Greeting>
+                        <Greeting>Bonjour <Name>{userData.userInfos.firstName}</Name></Greeting>
                         <MotivationPhrase>Félicitation ! Vous avez explosé vos objectifs hier 👏</MotivationPhrase>
                     </UserHeader>
                 </UserDetails>
+                ): <p>Loading data...</p> }
             </ContentApp>
         </>
     )
