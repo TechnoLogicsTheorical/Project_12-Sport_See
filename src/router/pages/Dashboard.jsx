@@ -1,11 +1,11 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from '../../components/Header';
 import AsideBar from '../../components/AsideBar/index.jsx';
-import { fetchUserData } from '../../utils/api.js';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { fetchData } from '../../utils/api.js';
 
 const GlobalStyle = createGlobalStyle`
     *, :before, :after {
@@ -56,22 +56,72 @@ const UserHeader = styled.div``;
 
 const MotivationPhrase = styled.p``;
 
+class UserDataModel {
+    constructor() {
+    }
+
+    getFirstName() {
+        return this.userInfos.firstName;
+    }
+
+    setUserInfos(dataFetched) {
+        this.id = dataFetched.id;
+        this.userInfos = dataFetched.userInfos;
+        this.keyData = dataFetched.keyData;
+        this.todayScore = dataFetched.todayScore;
+    }
+
+    setActivity(dataFetch) {
+        this.activity = {
+            sessions: dataFetch.sessions
+        }
+    }
+
+    setAverageSessions(dataFetch) {
+        this.averageSessions = {
+            sessions: dataFetch.sessions
+        }
+    }
+
+    setPerformance(dataFetch) {
+        this.performance = {
+            categories: dataFetch.kind,
+            valuesWithCategories: dataFetch.data
+        }
+    }
+}
+
 export default function Dashboard() {
     const [userData, setUserData] = useState(null);
 
-    async function getData() {
+    async function getData(userId, endpoint) {
         const baseUrl = '/mocked_datas/users';
-        const userId = '12';
-        const userEndpoint = 'mainData.json';
 
-        const completeURI = `${baseUrl}/${userId}/${userEndpoint}`
-        const data = await fetchUserData(completeURI);
-        setUserData(data);
+        const completeURI = `${baseUrl}/${userId}/${endpoint}.json`
+        return await fetchData(completeURI);
+    }
+
+    async function fetchAndFormatData(userId) {
+        const userDatas = new UserDataModel();
+
+        const userData = await getData(userId, 'mainData');
+        userDatas.setUserInfos(userData);
+
+        const averageSessions = await getData(userId,'average-sessions');
+        userDatas.setAverageSessions(averageSessions);
+
+        const activity = await getData(userId,'activity');
+        userDatas.setActivity(activity);
+
+        const performanceData = await getData(userId,'performance');
+        userDatas.setPerformance(performanceData);
+
+        setUserData(userDatas);
     }
 
     useEffect(() => {
-        getData();
-    }, [])
+        fetchAndFormatData('18');
+    }, [getData])
 
     // ----------------------------------
     return (
@@ -84,7 +134,7 @@ export default function Dashboard() {
                 { userData ? (
                 <UserDetails>
                     <UserHeader>
-                        <Greeting>Bonjour <Name>{userData.userInfos.firstName}</Name></Greeting>
+                        <Greeting>Bonjour <Name>{userData.getFirstName()}</Name></Greeting>
                         <MotivationPhrase>Félicitation ! Vous avez explosé vos objectifs hier 👏</MotivationPhrase>
                     </UserHeader>
                 </UserDetails>

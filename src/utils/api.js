@@ -10,18 +10,6 @@ async function performRequest(url) {
     }
 }
 
-export function fetchUserData(url) {
+export function fetchData(url) {
     return performRequest(url);
-}
-
-export function fetchUserActivity(url) {
-    return performRequest(url);
-}
-
-export function fetchUserPerformance(url) {
-    return performRequest(url)
-}
-
-export function fetchUserAverageSession(url) {
-    return performRequest(url)
 }
