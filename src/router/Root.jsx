@@ -6,6 +6,7 @@ import AsideBar from '../components/AsideBar/index.jsx';
 
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
+import DataProvider from '../utils/context/dataProvider.js';
 
 // -------------------------------
 // |        Styles Rooting       |
@@ -42,15 +43,18 @@ const ContentApp = styled.div`
 export default function Root() {
     return (
         <>
-            <GlobalStyle />
-            <Header />
+            <DataProvider>
+                <GlobalStyle />
+                <Header />
 
-            <ContentApp>
-                <AsideBar />
+                <ContentApp>
+                    <AsideBar />
 
-                <Outlet />
+                    <Outlet />
 
-            </ContentApp>
+                </ContentApp>
+            </DataProvider>
+
         </>
     )
 }
