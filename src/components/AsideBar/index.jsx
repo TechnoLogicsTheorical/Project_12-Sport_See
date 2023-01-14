@@ -1,10 +1,10 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import Man_Mediation from '../../assets/icons/icon1.png';
-import Swim from '../../assets/icons/icon2.png';
-import Bike from '../../assets/icons/icon3.png';
-import Alter from '../../assets/icons/icon4.png';
+import Man_Mediation from '../../assets/icons/aside/icon1.png';
+import Swim from '../../assets/icons/aside/icon2.png';
+import Bike from '../../assets/icons/aside/icon3.png';
+import Alter from '../../assets/icons/aside/icon4.png';
 
 const AsideContainer = styled.div`
     display: flex;
