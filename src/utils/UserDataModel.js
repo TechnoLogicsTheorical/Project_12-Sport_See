@@ -1,9 +1,20 @@
-export default class UserDataModel {
-    constructor() {
+function _calculateMinMaxKg(data) {
+    const minKg = data.sessions.reduce((min, session) => Math.min(min, session.kilogram), Infinity);
+    const maxKg = data.sessions.reduce((max, session) => Math.max(max, session.kilogram), -Infinity);
+    return {
+        minKg: minKg,
+        maxKg: maxKg
     }
+}
+
+export default class UserDataModel {
 
     getFirstName() {
         return this.userInfos.firstName;
+    }
+
+    getActivity() {
+        return this.activity;
     }
 
     setUserInfos(dataFetched) {
@@ -14,9 +25,18 @@ export default class UserDataModel {
     }
 
     setActivity(dataFetch) {
+        const {minKg, maxKg} = _calculateMinMaxKg(dataFetch);
+
         this.activity = {
-            sessions: dataFetch.sessions
-        }
+            minKg,
+            maxKg,
+            data: dataFetch.sessions.map((object) => {
+                return {
+                    ...object,
+                    day: new Date(object.day).getDate(),
+                }
+            })
+        };
     }
 
     setAverageSessions(dataFetch) {

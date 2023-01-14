@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
         --white-color: #FFFFFF;
         --red-color: #FF0101;
         --gray-color: #74798C;
+        --sec-gray-color: #FBFBFB;
         
         --medium-size: 24px;
         --big-size: 48px;
