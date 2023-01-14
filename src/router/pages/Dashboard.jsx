@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from '../../utils/context/dataProvider.js';
 
 import styled from 'styled-components';
 
@@ -25,16 +26,17 @@ const MotivationPhrase = styled.p``;
 
 
 export default function Dashboard() {
+    const { userData } = useContext(DataContext);
     return (
         <>
-            { true ? (
+            { userData ? (
             <UserDetails>
                 <UserHeader>
-                    <Greeting>Bonjour <Name>{'userData.getFirstName()'}</Name></Greeting>
+                    <Greeting>Bonjour <Name>{userData.getFirstName()}</Name></Greeting>
                     <MotivationPhrase>Félicitation ! Vous avez explosé vos objectifs hier 👏</MotivationPhrase>
                 </UserHeader>
             </UserDetails>
-            ): <p>Loading data...</p> }
+            ): <p>Aucune données existante!</p> }
         </>
     )
-}  
+}

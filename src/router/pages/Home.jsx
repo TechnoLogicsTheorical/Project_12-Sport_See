@@ -14,7 +14,16 @@ const Title = styled.h1`
 `;
 
 export default function Home() {
-    const { handleChangeUserId, userData, toggleMockData, useMockedData } = useContext(DataContext);
+    const { userData, setUserId, useMockedData, setUseMockedData } = useContext(DataContext);
+
+    function toggleMockData() {
+        setUseMockedData(!useMockedData);
+    }
+
+    function handleChangeUserId(userId) {
+        setUserId(userId);
+    }
+
     return (
         <Container>
 

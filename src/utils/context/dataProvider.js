@@ -10,15 +10,6 @@ export default function DataProvider({ children }) {
     const [userData, setUserData] = useState(null);
     const [useMockedData, setUseMockedData] = useState(true);
 
-
-    function toggleMockData() {
-        setUseMockedData(!useMockedData);
-    }
-
-    function handleChangeUserId(userId) {
-        setUserId(userId);
-    }
-
     async function getData(endpoint) {
         let baseUrl = '';
         let completeURI = '';
@@ -76,11 +67,12 @@ export default function DataProvider({ children }) {
 
     return (
         <DataContext.Provider value={{
-            handleChangeUserId,
             userData,
 
-            toggleMockData,
+            setUserId,
+
             useMockedData,
+            setUseMockedData
         }}>
             { children }
         </DataContext.Provider>
