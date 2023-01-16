@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import DailyActivityChart from '../charts/DailyActivity/index.jsx';
 
 const DailyContainer = styled.div`
-    margin-top: 75px;
     padding: 25px;
     background-color: #FBFBFB;
 `;

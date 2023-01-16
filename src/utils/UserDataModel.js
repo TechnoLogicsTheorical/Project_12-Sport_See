@@ -13,6 +13,10 @@ export default class UserDataModel {
         return this.userInfos.firstName;
     }
 
+    getUserStats() {
+        return this.keyData;
+    }
+
     getActivity() {
         return this.activity;
     }

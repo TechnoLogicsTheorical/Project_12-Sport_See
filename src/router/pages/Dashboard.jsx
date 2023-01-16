@@ -3,6 +3,12 @@ import { DataContext } from '../../utils/context/dataProvider.js';
 
 import styled from 'styled-components';
 import DailyActivity from '../../components/DailyActivity/index.jsx';
+import CardInfo from '../../components/CardInfo/index.jsx';
+
+import Calories from '../../assets/icons/user_details/calories.png';
+import Proteines from '../../assets/icons/user_details/proteines.png';
+import Glucides from '../../assets/icons/user_details/glucides.png';
+import Lipides from '../../assets/icons/user_details/lipides.png';
 
 const GeneratedContent = styled.div`
     flex-grow: 1;
@@ -24,12 +30,25 @@ const Name = styled.span`
 `;
 
 const UserHeader = styled.div``;
-
 const MotivationPhrase = styled.p``;
 
+const StatsContainer = styled.div`
+    margin-top: 75px;
+    display: flex;
+`;
+const ChartsContainer = styled.div``;
+
+const UserStats = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
+    border-radius: 5px;
+    margin-left: 28px;
+`;
 
 export default function Dashboard() {
     const { userData } = useContext(DataContext);
+    const userStatsData = userData.getUserStats();
     return (
         <>
         <GeneratedContent>
@@ -41,7 +60,46 @@ export default function Dashboard() {
                             <MotivationPhrase>Félicitation ! Vous avez explosé vos objectifs hier 👏</MotivationPhrase>
                         </UserHeader>
                     </UserDetails>
-                    <DailyActivity data={userData.getActivity()} />
+
+                    <StatsContainer>
+                        <ChartsContainer>
+                            <DailyActivity data={userData.getActivity()} />
+
+                        </ChartsContainer>
+                        <UserStats>
+                            <CardInfo
+                                value={userStatsData.calorieCount}
+                                valueExtension='kCal'
+                                category={'Calories'}
+                                color='#FF0000'
+                                icon={Calories}
+                            />
+
+                            <CardInfo
+                                value={userStatsData.proteinCount}
+                                valueExtension='g'
+                                category={'Proteines'}
+                                color='#4AB8FF'
+                                icon={Proteines}
+                            />
+
+                            <CardInfo
+                                value={userStatsData.carbohydrateCount}
+                                valueExtension='g'
+                                category={'Glucides'}
+                                color='#F9CE23'
+                                icon={Glucides}
+                            />
+
+                            <CardInfo
+                                value={userStatsData.lipidCount}
+                                valueExtension='g'
+                                category={'Lipides'}
+                                color='#FD5181'
+                                icon={Lipides}
+                            />
+                        </UserStats>
+                    </StatsContainer>
                 </>
                 ): <p>Aucune données existante!</p> }
         </GeneratedContent>
