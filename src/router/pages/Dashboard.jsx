@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../utils/context/dataProvider.js';
 
 import styled from 'styled-components';
-import DailyActivity from '../../components/DailyActivity/index.jsx';
+import DailyActivity from '../../components/charts/DailyActivity/index.jsx';
 import CardInfo from '../../components/CardInfo/index.jsx';
 
 import Calories from '../../assets/icons/user_details/calories.png';
 import Proteines from '../../assets/icons/user_details/proteines.png';
 import Glucides from '../../assets/icons/user_details/glucides.png';
 import Lipides from '../../assets/icons/user_details/lipides.png';
+import AverageSessions from '../../components/AverageSessions/index.jsx';
 
 const GeneratedContent = styled.div`
     flex-grow: 1;
@@ -64,7 +65,7 @@ export default function Dashboard() {
                     <StatsContainer>
                         <ChartsContainer>
                             <DailyActivity data={userData.getActivity()} />
-
+                            {/*<AverageSessions data={userData.getAverageSessions()}/>*/}
                         </ChartsContainer>
                         <UserStats>
                             <CardInfo

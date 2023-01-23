@@ -1,33 +1,64 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React from 'react';
 
-export default function DailyActivityChart({data}) {
+import styled from 'styled-components';
+import DailyActivityChart from './chart.jsx';
+
+const DailyContainer = styled.div`
+    padding: 25px;
+    background-color: #FBFBFB;
+`;
+const HeaderContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 35px;
+`;
+
+// Header styles
+const HeaderTitle = styled.h3`
+    font-size: 15px;
+    font-weight: 500;
+`;
+
+// Legends Stylzing
+const LegendsContainer = styled.div``;
+
+const LegendTitle = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-color);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 32px;
+`;
+
+const RoundedDotLegend = styled.div`
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: ${props => props.color || 'black'};
+    margin-right: 10px;
+`;
+
+export default function DailyActivity({ data }) {
     return (
-        <BarChart
-            width={835}
-            height={320}
-            data={data.data}
-            padding={{
-                top: 5,
-                right: 5,
-                left: 5,
-                bottom: 5,
-            }}
-        >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-                dataKey="day"
-            />
-            <YAxis
-                dataKey="kilogram"
-                type={"number"}
-                orientation={"right"}
-                allowDecimals={false}
-                domain={[data.minKg - 1, data.maxKg + 1]}
-            />
-            <Tooltip />
-            <Bar dataKey="kilogram" fill="black" />
-            <Bar dataKey="calories" fill="red" />
-        </BarChart>
+        <DailyContainer>
+            <HeaderContainer>
+                <HeaderTitle>Activité quotidienne</HeaderTitle>
+
+                <LegendsContainer>
+                    <LegendTitle>
+                        <RoundedDotLegend />Poids (kg)
+                    </LegendTitle>
+
+                    <LegendTitle>
+                        <RoundedDotLegend color='var(--red-color)' />Calories brûlées (kCal)
+                    </LegendTitle>
+                </LegendsContainer>
+            </HeaderContainer>
+
+            <DailyActivityChart data={data} />
+        </DailyContainer>
     )
 }
