@@ -7,6 +7,17 @@ function _calculateMinMaxKg(data) {
     }
 }
 
+function formatDateToFirstLetterString(day) {
+    let date = new Date();
+    date.setDate(day)
+    date.setMonth((7 - 1));
+    date.setFullYear(2020)
+
+    const dateStringDate = date.toLocaleDateString('fr-FR', {weekday:'narrow'})
+    // console.log(date, dateStringDate)
+    return dateStringDate;
+}
+
 export default class UserDataModel {
 
     getFirstName() {
@@ -19,6 +30,10 @@ export default class UserDataModel {
 
     getActivity() {
         return this.activity;
+    }
+
+    getAverageSessions() {
+        return this.averageSessions;
     }
 
     setUserInfos(dataFetched) {
@@ -45,7 +60,12 @@ export default class UserDataModel {
 
     setAverageSessions(dataFetch) {
         this.averageSessions = {
-            sessions: dataFetch.sessions
+            data: dataFetch.sessions.map((object) => {
+                return {
+                    ...object,
+                    day: formatDateToFirstLetterString(object.day),
+                }
+            })
         }
     }
 
