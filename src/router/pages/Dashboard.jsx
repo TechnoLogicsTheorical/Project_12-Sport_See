@@ -12,6 +12,7 @@ import Calories from '../../assets/icons/user_details/calories.png';
 import Proteines from '../../assets/icons/user_details/proteines.png';
 import Glucides from '../../assets/icons/user_details/glucides.png';
 import Lipides from '../../assets/icons/user_details/lipides.png';
+import PerformanceRadar from '../../components/charts/PerformanceRadar/index.jsx';
 
 const GeneratedContent = styled.div`
     flex-grow: 1;
@@ -68,6 +69,7 @@ export default function Dashboard() {
                         <ChartsContainer>
                             <DailyActivity data={userData.getActivity()} />
                             <AverageSessions data={userData.getAverageSessions()}/>
+                            <PerformanceRadar data={userData.getPerformance()} />
                         </ChartsContainer>
                         <UserStats>
                             <CardInfo

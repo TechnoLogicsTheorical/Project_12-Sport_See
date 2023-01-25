@@ -14,8 +14,35 @@ function formatDateToFirstLetterString(day) {
     date.setFullYear(2020)
 
     const dateStringDate = date.toLocaleDateString('fr-FR', {weekday:'narrow'})
-    // console.log(date, dateStringDate)
     return dateStringDate;
+}
+
+function reMapAndTranslate(data) {
+
+    for (const categoryKey in data) {
+        const string = data[categoryKey];
+        const categoryText = string.charAt(0).toUpperCase() + string.slice(1);
+        let finalString = '';
+
+        switch (categoryText) {
+            case 'Energy':
+                finalString = 'Energie';
+                break;
+            case 'Speed':
+                finalString = 'Vitesse';
+                break;
+            case 'Intensity':
+                finalString = 'Intensité';
+                break;
+            case 'Strength':
+                finalString = 'Force';
+                break;
+            default:
+                finalString = categoryText;
+        }
+        data[categoryKey] = finalString;
+    }
+    return data
 }
 
 export default class UserDataModel {
@@ -34,6 +61,10 @@ export default class UserDataModel {
 
     getAverageSessions() {
         return this.averageSessions;
+    }
+
+    getPerformance() {
+        return this.performance;
     }
 
     setUserInfos(dataFetched) {
@@ -70,9 +101,15 @@ export default class UserDataModel {
     }
 
     setPerformance(dataFetch) {
+        const categories = reMapAndTranslate(dataFetch.kind);
+
         this.performance = {
-            categories: dataFetch.kind,
-            valuesWithCategories: dataFetch.data
+            data: dataFetch.data.map((object) => {
+                return {
+                    value: object.value,
+                    category: categories[object.kind]
+                }
+            })
         }
     }
 }
