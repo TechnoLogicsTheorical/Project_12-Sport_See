@@ -6,7 +6,6 @@ async function performRequest(url) {
         return data.data;
     }
     catch (error) {
-        // Todo: Gérer les erreur renvoyées par Axios pour retourner un message dans l'interface
         console.error(error);
     }
 }
