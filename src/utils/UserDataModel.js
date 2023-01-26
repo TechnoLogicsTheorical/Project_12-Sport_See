@@ -67,11 +67,29 @@ export default class UserDataModel {
         return this.performance;
     }
 
+    getScore() {
+        return this.score;
+    }
+
     setUserInfos(dataFetched) {
         this.id = dataFetched.id;
         this.userInfos = dataFetched.userInfos;
         this.keyData = dataFetched.keyData;
-        this.todayScore = dataFetched.todayScore;
+        this.score = {
+            data: [
+                {
+                    name: "maximum",
+                    value: 1,
+                    fill: "transparent"
+                },
+                {
+                    name: 'unknow',
+                    value: dataFetched.todayScore,
+                    fill: '#FF0000',
+                }
+            ],
+            valueInPercent: dataFetched.todayScore * 100,
+        };
     }
 
     setActivity(dataFetch) {
