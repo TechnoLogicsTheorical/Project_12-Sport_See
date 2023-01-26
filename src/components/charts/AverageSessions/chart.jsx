@@ -1,9 +1,7 @@
 import React from 'react';
-import { LineChart, Line, XAxis, Tooltip } from 'recharts';
+import { CartesianGrid, LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 
 import styled from 'styled-components';
-import { YAxis } from 'recharts';
-import { CartesianGrid } from 'recharts';
 
 const TooltipContainer = styled.div`
     background-color: white;
@@ -26,7 +24,7 @@ function CustomTooltip({ payload, active }) {
 }
 
 function customMouseMove(e) {
-    let sessionWrap = document.querySelector('.sessionDurationWrap');
+    let sessionWrap = document.querySelector('#sessionDurationWrap');
 
     if (e.isTooltipActive) {
         let windowWidth = sessionWrap.offsetWidth;
@@ -42,7 +40,7 @@ function customMouseMove(e) {
 }
 
 function customOnMouseOut() {
-    let sessionWrap = document.querySelector('.sessionDurationWrap');
+    let sessionWrap = document.querySelector('#sessionDurationWrap');
     sessionWrap.style.background = '#FF0101';
 }
 

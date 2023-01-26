@@ -1,20 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import Card from '../../CardContainer/index.jsx';
 import ScoreChart from './chart.jsx';
 
-const Card = styled.div`
-    position: relative;
-    
-    display: flex;
-    flex-direction: column;
-    
-    border-radius: 5px;
-    background-color: var(--sec-gray-color);
-    height: 264px;
-    max-width: 258px;
-    
-    padding: 30px;
-`;
 
 const Title = styled.h3`
     font-size: 15px;
@@ -47,7 +36,7 @@ const ScorePercent = styled.div`
 
 export default function Score({ data }) {
     return (
-        <Card>
+        <Card sizes={{ h: 264, w: 258 }} style={{position: 'relative', padding: 30,}}>
             <Title>Score</Title>
             <ScoreChart data={data.data} />
             <DisplayScorePercentage>

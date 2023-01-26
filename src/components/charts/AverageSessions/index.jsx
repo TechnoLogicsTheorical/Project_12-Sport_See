@@ -1,16 +1,9 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import Card from '../../CardContainer/index.jsx';
 import AverageSessionsChart from './chart.jsx';
 
-const Card = styled.div`
-    border-radius: 5px;
-    background-color: var(--red-color);
-    height: 264px;
-    max-width: 258px;
-    display: flex;
-    flex-direction: column;
-`;
+import styled from 'styled-components';
 
 const Title = styled.h3`
     color: #FFFFFF80;
@@ -21,7 +14,11 @@ const Title = styled.h3`
 
 export default function AverageSessions({ data }) {
     return (
-        <Card className="sessionDurationWrap">
+        <Card
+            id="sessionDurationWrap"
+            sizes={{ h: 264, w: 258 }}
+            color={'var(--red-color)'}
+        >
             <Title>Durée moyenne des sessions</Title>
             <AverageSessionsChart data={data.data} />
         </Card>

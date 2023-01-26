@@ -52,6 +52,12 @@ const UserStats = styled.div`
     margin-left: 28px;
 `;
 
+const RowCharts = styled.div`
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+`;
+
 export default function Dashboard() {
     const { userData } = useContext(DataContext);
     const userStatsData = userData.getUserStats();
@@ -70,9 +76,12 @@ export default function Dashboard() {
                     <StatsContainer>
                         <ChartsContainer>
                             <DailyActivity data={userData.getActivity()} />
-                            <AverageSessions data={userData.getAverageSessions()}/>
-                            <PerformanceRadar data={userData.getPerformance()} />
-                            <Score data={userData.getScore()}/>
+
+                            <RowCharts>
+                                <AverageSessions data={userData.getAverageSessions()} />
+                                <PerformanceRadar data={userData.getPerformance()} />
+                                <Score data={userData.getScore()} />
+                            </RowCharts>
                         </ChartsContainer>
                         <UserStats>
                             <CardInfo
