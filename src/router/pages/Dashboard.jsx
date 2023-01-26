@@ -19,6 +19,8 @@ import Lipides from '../../assets/icons/user_details/lipides.png';
 const GeneratedContent = styled.div`
     flex-grow: 1;
     margin: 60px 90px;
+    height: 70vh;
+    overflow-y: scroll;
 `;
 
 const UserDetails = styled.div``;
