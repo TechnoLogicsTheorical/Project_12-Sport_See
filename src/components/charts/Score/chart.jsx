@@ -1,6 +1,12 @@
 import React from 'react';
 import { RadialBarChart, RadialBar } from "recharts";
 
+/**
+ * Graphical component of the Score component
+ * @param data {Array<Object>} Previously referenced in the parent component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ScoreChart({ data }) {
     return (
         <RadialBarChart

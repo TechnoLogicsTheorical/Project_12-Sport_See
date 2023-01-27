@@ -4,6 +4,7 @@ import Card from '../../CardContainer/index.jsx';
 import AverageSessionsChart from './chart.jsx';
 
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Title = styled.h3`
     color: #FFFFFF80;
@@ -12,6 +13,12 @@ const Title = styled.h3`
     width: 147px;
 `;
 
+/**
+ * Average Session component for the Graphic section
+ * @param data {Array<Object>} Formatted data from the UserDataModel.getAverageSessions() class
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function AverageSessions({ data }) {
     return (
         <Card
@@ -23,4 +30,10 @@ export default function AverageSessions({ data }) {
             <AverageSessionsChart data={data.data} />
         </Card>
     )
+}
+
+AverageSessions.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        data: PropTypes.array.isRequired
+    })).isRequired
 }

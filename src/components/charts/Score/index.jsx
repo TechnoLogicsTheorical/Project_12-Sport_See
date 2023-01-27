@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Card from '../../CardContainer/index.jsx';
 import ScoreChart from './chart.jsx';
+import PropTypes from 'prop-types';
 
 
 const Title = styled.h3`
@@ -34,9 +35,19 @@ const ScorePercent = styled.div`
     color: black;
 `;
 
+/**
+ * Score component for the Graphic section
+ * @param data {Array<Object>} Formatted data from the UserDataModel.getScore() class
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Score({ data }) {
     return (
-        <Card sizes={{ h: 264, w: 258 }} style={{position: 'relative', padding: 30,}}>
+        <Card
+            sizes={{ h: 264, w: 258 }}
+            color={'var(--sec-gray-color)'}
+            style={{position: 'relative', padding: 30}}
+        >
             <Title>Score</Title>
             <ScoreChart data={data.data} />
             <DisplayScorePercentage>
@@ -46,3 +57,10 @@ export default function Score({ data }) {
         </Card>
     )
 }
+
+Score.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        data: PropTypes.array.isRequired,
+        valueInPercent: PropTypes.number.isRequired,
+    })).isRequired
+};

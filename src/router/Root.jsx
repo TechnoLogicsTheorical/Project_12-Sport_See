@@ -41,6 +41,12 @@ const ContentApp = styled.div`
     flex-direction: row;
 `;
 
+/**
+
+ Route component for sectioning off common root code to each other page piece
+ @returns {JSX.Element} Root HTML elements
+ @constructor
+ */
 export default function Root() {
     return (
         <>
@@ -55,7 +61,6 @@ export default function Root() {
 
                 </ContentApp>
             </DataProvider>
-
         </>
     )
 }

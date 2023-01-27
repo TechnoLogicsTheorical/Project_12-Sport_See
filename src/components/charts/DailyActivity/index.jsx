@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import DailyActivityChart from './chart.jsx';
+import PropTypes from 'prop-types';
 
 const DailyContainer = styled.div`
     padding: 25px;
@@ -41,6 +42,12 @@ const RoundedDotLegend = styled.div`
     margin-right: 10px;
 `;
 
+/**
+ * Daily Activity component for the Graphic section
+ * @param data {Array<Object>} Formatted data from the UserDataModel.getActivity() class
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function DailyActivity({ data }) {
     return (
         <DailyContainer>
@@ -58,7 +65,13 @@ export default function DailyActivity({ data }) {
                 </LegendsContainer>
             </HeaderContainer>
 
-            <DailyActivityChart data={data} />
+            <DailyActivityChart data={data.data} />
         </DailyContainer>
     )
+}
+
+DailyActivity.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        data: PropTypes.array.isRequired
+    })).isRequired
 }

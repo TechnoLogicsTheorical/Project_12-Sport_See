@@ -2,6 +2,7 @@ import React from 'react';
 
 import Card from '../CardContainer/index.jsx';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const RoundedContainer = styled.div`
     display: inline-flex;
@@ -29,6 +30,16 @@ const TextCategory = styled.p`
     color: var(--gray-color);
 `;
 
+/**
+ User information component in the form of a card
+ @param value {string} Numeric value as a string
+ @param valueExtension {string} Measurement unit
+ @param category {string} Food category
+ @param color {string} Background color of the frame containing the image
+ @param icon {image} Variable containing the image in Base64
+ @returns {JSX.Element}
+ @constructor
+ */
 export default function CardInfo({ value, valueExtension, category, color, icon }) {
     return (
         <Card
@@ -53,3 +64,11 @@ export default function CardInfo({ value, valueExtension, category, color, icon 
         </Card>
     )
 }
+
+CardInfo.propTypes = {
+    value: PropTypes.string.isRequired,
+    valueExtension: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
+};

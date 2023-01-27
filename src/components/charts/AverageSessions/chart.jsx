@@ -44,6 +44,12 @@ function customOnMouseOut() {
     sessionWrap.style.background = '#FF0101';
 }
 
+/**
+ * Graphical component of the Score component
+ * @param data {Array<Object>} Previously referenced in the parent component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function AverageSessionsChart({ data }) {
     return (
         <LineChart

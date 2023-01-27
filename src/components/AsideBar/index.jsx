@@ -48,8 +48,12 @@ const CopyrightText = styled.p`
     transform: rotate(-180deg);
 `
 
+/**
+ * This component is used to display a menu of links containing images and the copyright information.
+ * @returns {JSX.Element} Display component for the link menu containing images and the copyright, returns an HTML element.
+ * @constructor
+ */
 export default function AsideBar() {
-
     return (
         <>
             <AsideContainer>

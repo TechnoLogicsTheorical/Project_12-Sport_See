@@ -33,12 +33,18 @@ function CustomTooltipShape({ active, payload }) {
     return null;
 }
 
+/**
+ * Graphical component of the Score component
+ * @param data {Array<Object>} Previously referenced in the parent component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function DailyActivityChart({ data }) {
     return (
         <BarChart
             width={766}
             height={215}
-            data={data.data}
+            data={data}
             padding={{
                 top: 10,
                 right: 5,

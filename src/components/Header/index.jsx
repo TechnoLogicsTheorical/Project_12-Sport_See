@@ -34,6 +34,11 @@ const FakeLink = styled.li`
     font-weight: inherit;
 `;
 
+/**
+ * Header display component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Header() {
     return (
         <HeaderContainer>
