@@ -1,16 +1,7 @@
 import React from 'react';
 
+import Card from '../CardContainer/index.jsx';
 import styled from 'styled-components';
-
-const CardContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  
-    background-color: var(--sec-gray-color);
-    padding: 32px;
-    width: 258px;
-`;
 
 const RoundedContainer = styled.div`
     display: inline-flex;
@@ -40,7 +31,17 @@ const TextCategory = styled.p`
 
 export default function CardInfo({ value, valueExtension, category, color, icon }) {
     return (
-        <CardContainer>
+        <Card
+            color={'var(--sec-gray-color)'}
+            sizes={{ w: 258, h: 'auto' }}
+            style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+                padding: 32
+            }}
+        >
             <RoundedContainer color={color}>
                 <Image src={icon} alt={'Icone de la catégorie'}/>
             </RoundedContainer>
@@ -49,6 +50,6 @@ export default function CardInfo({ value, valueExtension, category, color, icon 
                 <TextValue>{value + valueExtension}</TextValue>
                 <TextCategory>{category}</TextCategory>
             </ValueContainer>
-        </CardContainer>
+        </Card>
     )
 }
