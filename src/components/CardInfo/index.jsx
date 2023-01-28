@@ -66,7 +66,7 @@ export default function CardInfo({ value, valueExtension, category, color, icon 
 }
 
 CardInfo.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     valueExtension: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,

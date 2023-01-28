@@ -44,7 +44,8 @@ const RoundedDotLegend = styled.div`
 
 /**
  * Daily Activity component for the Graphic section
- * @param data {Array<Object>} Formatted data from the UserDataModel.getActivity() class
+ * @param data {Object} Formatted data from the UserDataModel.getActivity() class
+ * @param data.data {Array<Object>} Array of User Data
  * @returns {JSX.Element}
  * @constructor
  */
@@ -71,7 +72,7 @@ export default function DailyActivity({ data }) {
 }
 
 DailyActivity.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
+    data: PropTypes.shape({
         data: PropTypes.array.isRequired
-    })).isRequired
+    }).isRequired
 }

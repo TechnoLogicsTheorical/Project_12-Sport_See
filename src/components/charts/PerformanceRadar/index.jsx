@@ -22,7 +22,7 @@ export default function PerformanceRadar({ data }) {
 }
 
 PerformanceRadar.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
+    data: PropTypes.shape({
         data: PropTypes.array.isRequired
-    })).isRequired
+    }).isRequired
 }

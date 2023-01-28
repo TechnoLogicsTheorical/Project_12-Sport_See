@@ -33,7 +33,7 @@ export default function AverageSessions({ data }) {
 }
 
 AverageSessions.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
+    data: PropTypes.shape({
         data: PropTypes.array.isRequired
-    })).isRequired
+    }).isRequired
 }
